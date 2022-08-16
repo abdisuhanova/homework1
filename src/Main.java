@@ -1,8 +1,10 @@
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args){
+        Random r = new Random();
         Student student1 = new Student("Manzura",16),
                 student2 = new Student("Azizbek", 17),
                 student3 = new Student("Muratbek", 18),
@@ -55,26 +57,24 @@ public class Main {
                 student33, student34, student35, student36,
                 student37, student38, student39, student40
         };
-        int[] numbers = {
-                0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
-                10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
-                20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
-                30, 31, 32, 33, 34, 35, 36, 37, 38, 39
-        };
-
 
         Mentor mentor1 = new Mentor("Muhammed", 22);
         Mentor mentor2 = new Mentor("Zhanarbek", 22);
         Mentor mentor3 = new Mentor("Samarbek", 19);
         Mentor mentor4 = new Mentor("Zhazgul", 25);
         Mentor[] mentors = {mentor1, mentor2, mentor3, mentor4};
-        Collections.shuffle(Arrays.asList(numbers));
-        int count = 0;
+        int random, count = 0;
 
-        for (Mentor m:mentors){
-            for (int i = 0; i < 10; i++){
-                m.addStudent(students[count]);
-                count++;
+        for (Student s : students){
+
+            while (true){
+                random = r.nextInt(0, 4);
+                if (mentors[random].students.size() < Math.round(students.length/mentors.length)){
+                    mentors[random].addStudent(s);
+                    count++;
+                    System.out.println(count + " " + mentors[random].getName() + " " + s.getName() + s.getAge());
+                    break;
+                }
             }
         }
     }
