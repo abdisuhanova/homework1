@@ -63,7 +63,7 @@ public class Main {
         Mentor mentor3 = new Mentor("Samarbek", 19);
         Mentor mentor4 = new Mentor("Zhazgul", 25);
         Mentor[] mentors = {mentor1, mentor2, mentor3, mentor4};
-        int random, count = 0;
+        int random;
 
         for (Student s : students){
 
@@ -71,8 +71,6 @@ public class Main {
                 random = r.nextInt(0, 4);
                 if (mentors[random].students.size() < Math.round(students.length/mentors.length)){
                     mentors[random].addStudent(s);
-                    count++;
-                    System.out.println(count + " " + mentors[random].getName() + " " + s.getName() + s.getAge());
                     break;
                 }
             }
